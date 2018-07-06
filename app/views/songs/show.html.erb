@@ -1,5 +1,5 @@
  <%binding.pry%>
-<%if @song.artist.name == false  %>
+<%if @song.artist != nil %>
 
  <%= @song.artist.name  %> - <%= @song.title %>
  <%else%>
