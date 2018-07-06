@@ -29,9 +29,10 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
 
     @song.update(song_params)
-
+    @song.artist = Song.find_or_create_by(name: params(:artist))
+    binding.pry
     if @song.save
-      redirect_to @song
+      redirect_to songs_path(@song)
     else
       render :edit
     end
