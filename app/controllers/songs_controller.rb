@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   def index
-    @songs = Song.all
+    @artists = Artist.all
   end
 
   def show
@@ -8,6 +8,7 @@ class SongsController < ApplicationController
   end
 
   def new
+    @song = Song.new
   end
 
   def create
@@ -28,9 +29,10 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
 
     @song.update(song_params)
+    @song.artist = Artist.find_or_create_by(name: params[:song][:artist])
 
     if @song.save
-      redirect_to @song
+      redirect_to songs_path(@song)
     else
       render :edit
     end
