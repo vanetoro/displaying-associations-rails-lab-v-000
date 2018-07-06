@@ -1,7 +1,7 @@
 class Artist < ActiveRecord::Base
   has_many :songs
 
-def self.song_count
-  self.songs.count
+def song_count
+  songs.count
 end
 end
