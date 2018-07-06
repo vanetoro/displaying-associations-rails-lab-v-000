@@ -1,1 +1,5 @@
-<%= @song.artist.name %> - <%= @song.title %>
+<%if @song.artist.name != nil  %>
+ <%= @song.artist.name  %> - <%= @song.title %>
+ <%else%>
+<%= @song.title %>
+ <%end%>
